@@ -11,10 +11,6 @@ router.post('/register', async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const isMatch = await bcrypt.compare(password, hashedPassword);
-    console.log('Password:', password);
-    console.log('Hashed Password:', hashedPassword);
-    console.log('isMath:', isMatch);
     const user = new User({ name, email, password });
     await user.save();
     res.status(201).send('User registered successfully');
@@ -32,9 +28,6 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    console.log('Password:', password);
-    console.log('Hashed Password:', user.password);
-    console.log('isMatch:', isMatch);
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid email or password' });
     }
