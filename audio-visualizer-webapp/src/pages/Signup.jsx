@@ -23,7 +23,7 @@ const Signup = () => {
 
   return (
     <div className="signup">
-      <h2>Signup</h2>
+      <h2 className="text-center">Signup</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
@@ -47,7 +47,7 @@ const Signup = () => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">Signup</button>
+        <button type="submit" className="submit-btn">Signup</button>
       </form>
     </div>
   );

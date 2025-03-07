@@ -6,6 +6,10 @@
     border-radius: 5px;
 }
 
+.text-center {
+    text-align: center;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -17,9 +21,20 @@ input {
     font-size: 1rem;
 }
 
-button {
-    padding: 0.5rem;
+button.submit-btn {
     font-size: 1rem;
+    padding: 10px 20px;
+    border-color: #4db8ff;
+    background-color: #4db8ff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 24px auto;
+    width: max-content;
+}
+
+button.submit-btn:hover {
+    background-color: #3399ff;
 }
 
 p.error {
