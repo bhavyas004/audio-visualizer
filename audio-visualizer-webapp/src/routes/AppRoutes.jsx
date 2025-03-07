@@ -16,7 +16,7 @@ const AppRoutes = ({ isAuthenticated, onLogout }) => {
       <Header isAuthenticated={isAuthenticated} onLogout={onLogout} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home isAuthenticated={isAuthenticated} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/visualization" element={<Visualization />} />

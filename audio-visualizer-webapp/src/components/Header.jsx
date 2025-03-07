@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { logout } from '../services/api';
 import '../styles/Header.css';
 
-const Header = ({ isAuthenticated, onLogout }) => {
+const Header = () => {
   const navigate = useNavigate();
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
+    localStorage.removeItem('user');
+    setIsAuthenticated(false);
+    navigate('/');
+  };
 
   return (
     <header>
@@ -12,7 +22,7 @@ const Header = ({ isAuthenticated, onLogout }) => {
         Audio Visualizer</div>
       <nav>
         {isAuthenticated ? (
-          <button onClick={onLogout}>Logout</button>
+          <button onClick={handleLogout}>Logout</button>
         ) : (
           <>
             <Link to="/login">Login</Link>

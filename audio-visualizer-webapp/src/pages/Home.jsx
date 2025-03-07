@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../context/AuthContext';
 import '../styles/Home.css';
 
-const Home = ({ isAuthenticated }) => {
+const Home = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const [audioFile, setAudioFile] = useState(null);
   const audioRef = useRef(null);
   const handleAudioUpload = (event) => {
@@ -28,8 +30,8 @@ const Home = ({ isAuthenticated }) => {
         </h2>
         <p>Experience real-time visualizations that sync with your music.</p>
 
-        {/* {
-          isAuthenticated ? */}
+        {
+          isAuthenticated ?
             <div className="upload-section">
               <input
                 type="file"
@@ -40,11 +42,11 @@ const Home = ({ isAuthenticated }) => {
               <label htmlFor="audioInput" className="upload-btn">
                 Upload Audio
               </label>
-            </div> {/* :
+            </div> :
             <div className="upload-section">
               <button className="upload-btn" onClick={() => navigate('/login')}>Login to Upload Audio</button>
             </div>
-        } */}
+        }
       </div>
 
       <div className="content">
